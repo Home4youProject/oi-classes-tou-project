@@ -1,2 +1,2 @@
-# oi-classes-tou-project
-edw anevazoume ton kwdika ton klassewn apo to sequence diagram se python
+#project code
+Ο κώδικας του project home4u σε γλώσσα python και με framework flask
