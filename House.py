@@ -1,0 +1,12 @@
+class House(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    house_name = db.Column(db.String(60), nullable=False)
+    city = db.Column(db.String(60), nullable=False)
+    postal_code = db.Column(db.Integer, nullable=False)
+    address = db.Column(db.String(60), nullable=False)
+    square_meters = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Integer(), nullable=False)
+    house_type = db.Column(db.String(20), nullable=True)
+    visitors = db.Column(db.Integer(), nullable=True)
+    user_id = db.Column(db.Integer())
+    image_file = db.Column(db.String(20), nullable=False, default='default_house.png')
