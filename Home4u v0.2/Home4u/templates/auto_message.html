@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+  <legend class="border-bottom mb-4">Αυτοματοποιημένο μήνυμα</legend>
+    <!DOCTYPE html>
+<html>
+<body>
+
+<h5>Επιλέξτε ενα απο τα παρακάτω αυτοματοποιημένα μηνύματα </h5>
+
+<form action="/action_page.php">
+
+  <input type="radio" id="1" name="auto_m" value=“reuma“>
+  <label for="male">Έχω πρόβλημα με το ηλεκτρικό
+ρεύμα</label><br>
+  <input type="radio" id="2" name="auto_m" value="nero">
+  <label for="female">Εχω πρόβλημα με το νερό</label><br>
+  <input type="radio" id="3" name="auto_m" value="internet">
+  <label for="other">Δεν έχω internet</label><br>
+  <input type="radio" id="4" name="auto_m" value="zesto_nero">
+  <label for="age1">Δεν έχω ζεστό νερό</label><br>
+  <input type="radio" id="5" name="auto_m" value="8ermansi">
+  <label for="age2">Δεν έχω θέρμανση</label><br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+{% endblock content %}
