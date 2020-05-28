@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Επιλέξτε μια απο τις παρακάτω επιλογές </legend>
+
+
+
+                <ol>
+                  <li>Δεν εχω ρεύμα</li>
+                  <li>Δεν εχω νερό</li>
+                  <li>Δεν εχω internet</li>
+                  <li>Δεν εχω ζεστό νετό</li>
+                  <li>Δεν έχω θέρμανση</li>
+
+                </ol>
+
+                <div class="form-group">
+                    {{ form.select_type.label(class="form-control-label") }}
+
+
+                    {{ form.select_type(class="form-control form-control-lg") }}
+                </div>
+                <br>
+                <div class="form-group">
+                    {{ form.receiver.label(class="form-control-label") }}
+
+
+                    {{ form.receiver(class="form-control form-control-lg") }}
+
+                </div>
+          </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+
+{% endblock content %}
