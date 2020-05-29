@@ -60,7 +60,21 @@ posts = [
     }
 ]
 
-
+def check_message(select_type):
+        if select_type == 1 :
+            x = 'δεν εχω ρεύμα'
+        elif select_type == 2 :
+            x = 'Δεν εχω νερό'
+        elif select_type == 3 :
+            x = 'Δεν εχω internet'
+        elif select_type == 4 :
+            x = 'Δεν εχω ζεστό νερό'
+        elif select_type == 5 :
+           x ='Δεν έχω θέρμανση'
+        else :
+           x=''
+        return x
+        
 @app.route("/")
 @app.route("/home",  methods=['GET', 'POST'])
 def home():
@@ -75,24 +89,14 @@ def about():
 def com():
     return render_template('communication.html', title='communication')
 
+
+
 @app.route("/auto_message", methods=['GET', 'POST'])
 def auto_message():
     form = CommunicationForm()
     if form.validate_on_submit():
      #check_message
-
-        if form.select_type.data == 1 :
-            x = 'δεν εχω ρεύμα'
-        elif form.select_type.data == 2 :
-            x = 'Δεν εχω νερό'
-        elif form.select_type.data == 3 :
-            x = 'Δεν εχω internet'
-        elif form.select_type.data == 4 :
-            x = 'Δεν εχω ζεστό νερό'
-        elif form.select_type.data == 5 :
-           x ='Δεν έχω θέρμανση'
-        else :
-           x=''
+        x=check_message(form.select_type.data)
         com = Communication(auto_type=x, receiver= form.receiver.data)
         db.session.add(com)
         db.session.commit()

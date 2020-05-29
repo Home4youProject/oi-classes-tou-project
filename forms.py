@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
+from wtforms.validators import DataRequired, Length, Email, EqualTo, NumberRange
 
 
 class RegistrationForm(FlaskForm):
@@ -22,9 +22,7 @@ class LoginForm(FlaskForm):
 
 
 class CommunicationForm(FlaskForm):
-    select_type = IntegerField('Επιλογη μήνυματος',
-                          validators=[DataRequired()])
-                        
-
-    receiver = StringField('Παραλήπτης', validators=[DataRequired()])
+    select_type = IntegerField('Επιλογη μήνυματος')
+    receiver = StringField('Παραλήπτης')
+    message =  StringField('Γραπτο μηνύμα')
     submit = SubmitField('Αποστολή')
