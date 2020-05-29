@@ -37,6 +37,7 @@ class Communication(db.Model):
     auto_type = db.Column(db.String(120))
     select_type = db.Column(db.Integer())
     receiver = db.Column(db.String(50), nullable=False)
+    message =  db.Column(db.String(150))
 
 
     def __repr__(self):
@@ -79,6 +80,7 @@ def auto_message():
     form = CommunicationForm()
     if form.validate_on_submit():
      #check_message
+
         if form.select_type.data == 1 :
             x = 'δεν εχω ρεύμα'
         elif form.select_type.data == 2 :
@@ -86,9 +88,11 @@ def auto_message():
         elif form.select_type.data == 3 :
             x = 'Δεν εχω internet'
         elif form.select_type.data == 4 :
-            x = 'Δεν εχω ζεστό νετό'
+            x = 'Δεν εχω ζεστό νερό'
+        elif form.select_type.data == 5 :
+           x ='Δεν έχω θέρμανση'
         else :
-            x ='Δεν έχω θέρμανση'
+           x=''
         com = Communication(auto_type=x, receiver= form.receiver.data)
         db.session.add(com)
         db.session.commit()
@@ -97,10 +101,16 @@ def auto_message():
         return redirect(url_for('home'))
     return render_template('auto_message.html', title='auto_message', form=form)
 
-@app.route("/write_message")
+@app.route("/write_message", methods=['GET', 'POST'])
 def write_message():
     form = CommunicationForm()
-    return render_template('write_message.html', title='auto_message', form=form)
+    if form.validate_on_submit():
+        com2 = Communication(message=form.message.data, receiver= form.receiver.data)
+        db.session.add(com2)
+        db.session.commit()
+        flash('Το μήνυμα εστάλει στο χρήστη !', 'success')
+        return redirect(url_for('home'))
+    return render_template('write_message.html', title='write message', form=form)
 
 
 
